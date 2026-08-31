@@ -11,19 +11,17 @@ dotenv.config();
 
 const app = express();
 app.use(cors({
-  origin: 'https://controle-de-ganhos-pi.vercel.app',
+  origin: 'https://controle-de-ganhos-pi.vercel.app/',
   credentials: true
 }));
 
 app.use(cookieParser());
 app.use(express.json());
 
-// Conectar ao Banco
 connectDB();
 
-// Rotas
 app.use('/api/auth', authRoute);
-app.use('/api/clientes', clientRoute); // <-- Adicione esta linha
+app.use('/api/clientes', clientRoute);
 app.use('/api/vendas', saleRoute);
 
 const PORT = process.env.PORT || 4000;
